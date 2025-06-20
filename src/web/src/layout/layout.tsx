@@ -35,8 +35,8 @@ const Layout: FC = (): ReactElement => {
         navigate(`/lists/${newList.id}`);
     }
 
-    const onItemEdited = (item: TodoItem) => {
-        actions.items.save(item.listId, item);
+    const onItemEdited = async (item: TodoItem) => {
+        await actions.items.save(item.listId, item);
         actions.items.select(undefined);
         navigate(`/lists/${item.listId}`);
     }

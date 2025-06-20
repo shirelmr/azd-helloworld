@@ -1,0 +1,420 @@
+/* Soft Pink Theme for Todo App */
+
+/* Override Fluent UI default styles with soft pink theme */
+
+/* Define color variables */
+:root {
+  --soft-pink-lightest: #fdf2f8;
+  --soft-pink-extra-light: #fef7f0;
+  --soft-pink-light: #fce7f3;
+  --soft-pink-medium: #f9a8d4;
+  --soft-pink-dark: #ec4899;
+  --soft-pink-accent: #be185d;
+  --soft-pink-lines: #DB8DD0;
+  --light-purple: #e879f9;
+  --light-purple-hover: #d946ef;
+  --light-purple-dark: #c026d3;
+  --lavender: #f3e8ff;
+  --lavender-dark: #e9d5ff;
+}
+
+/* Main application container */
+.ms-Stack {
+  background-color: transparent !important;
+}
+
+/* Header styling */
+[class*="header"] {
+  background: linear-gradient(90deg, var(--soft-pink-light), var(--soft-pink-lightest)) !important;
+  border-bottom: 1px solid var(--soft-pink-lines) !important;
+}
+
+/* Sidebar styling */
+[class*="sidebar"] {
+  background: linear-gradient(180deg, var(--soft-pink-lightest), var(--soft-pink-light)) !important;
+  border-right: 1px solid var(--soft-pink-lines) !important;
+}
+
+/* Main content area */
+[class*="main"] {
+  background: var(--soft-pink-background) !important;
+}
+
+/* Button styling */
+.ms-Button--primary {
+  background-color: var(--light-purple) !important;
+  border-color: var(--light-purple) !important;
+  color: white !important;
+}
+
+.ms-Button--primary:hover {
+  background-color: var(--light-purple-hover) !important;
+  border-color: var(--light-purple-hover) !important;
+  color: white !important;
+}
+
+.ms-Button--default {
+  background-color: var(--lavender) !important;
+  border-color: var(--soft-pink-lines) !important;
+  color: var(--light-purple-dark) !important;
+}
+
+.ms-Button--default:hover {
+  background-color: var(--lavender-dark) !important;
+  border-color: var(--light-purple-hover) !important;
+  color: var(--light-purple-dark) !important;
+}
+
+/* Additional button variants */
+.ms-Button {
+  background-color: var(--lavender) !important;
+  border-color: var(--soft-pink-lines) !important;
+  color: var(--light-purple-dark) !important;
+}
+
+.ms-Button:hover {
+  background-color: var(--lavender-dark) !important;
+  border-color: var(--light-purple-hover) !important;
+  color: var(--light-purple-dark) !important;
+}
+
+/* Icon buttons */
+.ms-IconButton {
+  background-color: transparent !important;
+  color: var(--light-purple-dark) !important;
+}
+
+.ms-IconButton:hover {
+  background-color: var(--lavender) !important;
+  color: var(--light-purple-hover) !important;
+}
+
+/* Command bar buttons */
+.ms-CommandBarItem-link {
+  color: var(--light-purple-dark) !important;
+}
+
+.ms-CommandBarItem-link:hover {
+  background-color: var(--lavender) !important;
+  color: var(--light-purple-hover) !important;
+}
+
+/* Split button styling */
+.ms-Button--compound {
+  background-color: var(--lavender) !important;
+  border-color: var(--soft-pink-lines) !important;
+  color: var(--light-purple-dark) !important;
+}
+
+.ms-Button--compound:hover {
+  background-color: var(--lavender-dark) !important;
+  border-color: var(--light-purple-hover) !important;
+}
+
+/* Action button styling */
+.ms-Button--action {
+  background-color: transparent !important;
+  color: var(--light-purple-dark) !important;
+}
+
+.ms-Button--action:hover {
+  background-color: var(--lavender) !important;
+  color: var(--light-purple-hover) !important;
+}
+
+/* Toggle button styling */
+.ms-Toggle-background {
+  background-color: var(--lavender) !important;
+  border-color: var(--light-purple) !important;
+}
+
+.ms-Toggle-thumb {
+  background-color: var(--light-purple) !important;
+}
+
+.ms-Toggle.is-checked .ms-Toggle-background {
+  background-color: var(--light-purple) !important;
+}
+
+.ms-Toggle.is-checked .ms-Toggle-thumb {
+  background-color: white !important;
+}
+
+/* Search box styling */
+.ms-SearchBox {
+  background-color: var(--soft-pink-lightest) !important;
+  border: 1px solid var(--soft-pink-lines) !important;
+}
+
+.ms-SearchBox:focus-within {
+  border-color: var(--soft-pink-dark) !important;
+}
+
+/* Details list styling */
+.ms-DetailsList {
+  background-color: var(--soft-pink-background) !important;
+}
+
+.ms-DetailsHeader {
+  background-color: var(--soft-pink-extra-light) !important;
+  border-bottom: 1px solid var(--soft-pink-lines) !important;
+}
+
+.ms-DetailsRow {
+  background-color: var(--soft-pink-background) !important;
+  border-bottom: 1px solid var(--soft-pink-lines) !important;
+}
+
+.ms-DetailsRow:hover {
+  background-color: var(--soft-pink-light) !important;
+}
+
+.ms-DetailsRow.is-selected {
+  background-color: var(--soft-pink-light) !important;
+}
+
+/* Group header styling */
+.ms-GroupHeader {
+  background-color: var(--soft-pink-extra-light) !important;
+  color: var(--soft-pink-accent) !important;
+  font-weight: 600 !important;
+  border: 1px solid var(--soft-pink-lines) !important;
+  border-radius: 8px !important;
+  margin: 4px 0 !important;
+  padding: 8px 12px !important;
+}
+
+/* Panel styling */
+.ms-Panel-main {
+  background-color: var(--soft-pink-lightest) !important;
+}
+
+.ms-Panel-header {
+  background-color: var(--soft-pink-light) !important;
+  border-bottom: 1px solid var(--soft-pink-lines) !important;
+}
+
+/* Text field styling */
+.ms-TextField-field {
+  background-color: var(--soft-pink-lightest) !important;
+  border: 1px solid var(--soft-pink-lines) !important;
+}
+
+.ms-TextField-field:focus {
+  border-color: var(--soft-pink-dark) !important;
+}
+
+/* Dropdown styling */
+.ms-Dropdown {
+  background-color: var(--soft-pink-lightest) !important;
+  border: 1px solid var(--soft-pink-lines) !important;
+}
+
+.ms-Dropdown:focus {
+  border-color: var(--soft-pink-dark) !important;
+}
+
+.ms-Dropdown-callout {
+  background-color: var(--soft-pink-lightest) !important;
+  border: 1px solid var(--soft-pink-lines) !important;
+}
+
+.ms-Dropdown-item:hover {
+  background-color: var(--soft-pink-light) !important;
+}
+
+/* DatePicker styling */
+.ms-DatePicker {
+  background-color: var(--soft-pink-lightest) !important;
+}
+
+.ms-DatePicker-input {
+  background-color: var(--soft-pink-lightest) !important;
+  border: 1px solid var(--soft-pink-lines) !important;
+}
+
+/* TimePicker styling */
+.ms-TimePicker {
+  background-color: var(--soft-pink-lightest) !important;
+}
+
+.ms-TimePicker-input {
+  background-color: var(--soft-pink-lightest) !important;
+  border: 1px solid var(--soft-pink-lines) !important;
+}
+
+/* Command bar styling */
+.ms-CommandBar {
+  background-color: var(--soft-pink-light) !important;
+}
+
+.ms-CommandBarItem-link {
+  color: var(--soft-pink-accent) !important;
+}
+
+.ms-CommandBarItem-link:hover {
+  background-color: var(--soft-pink-medium) !important;
+}
+
+/* Shimmer styling */
+.ms-Shimmer-shimmerWrapper {
+  background: linear-gradient(90deg, var(--soft-pink-light) 25%, var(--soft-pink-medium) 50%, var(--soft-pink-light) 75%) !important;
+}
+
+/* Spinner styling */
+.ms-Spinner-circle {
+  border-color: var(--soft-pink-medium) var(--soft-pink-light) var(--soft-pink-light) !important;
+}
+
+/* MessageBar override for celebration toast */
+.ms-MessageBar--success {
+  background-color: var(--soft-pink-medium) !important;
+  color: var(--soft-pink-accent) !important;
+}
+
+/* Icon styling */
+.ms-Icon {
+  color: var(--soft-pink-accent) !important;
+}
+
+/* Checkbox styling */
+.ms-Checkbox-checkbox {
+  border-color: var(--soft-pink-lines) !important;
+}
+
+.ms-Checkbox-checkbox:checked {
+  background-color: var(--soft-pink-dark) !important;
+  border-color: var(--soft-pink-dark) !important;
+}
+
+/* Text styling */
+.ms-Text {
+  color: var(--soft-pink-accent) !important;
+}
+
+/* Additional soft styling for rounded corners */
+.ms-Button,
+.ms-TextField-field,
+.ms-Dropdown,
+.ms-DatePicker-input,
+.ms-TimePicker-input,
+.ms-SearchBox {
+  border-radius: 8px !important;
+}
+
+.ms-Panel {
+  border-radius: 12px 0 0 12px !important;
+}
+
+/* Custom pink scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--soft-pink-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--soft-pink-medium);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--soft-pink-dark);
+}
+
+/* Ensure all background areas are pink */
+html, body, #root {
+  background: var(--soft-pink-background) !important;
+  min-height: 100vh;
+}
+
+/* Override any remaining gray backgrounds */
+div, section, main, aside, header, footer {
+  background-color: transparent !important;
+}
+
+/* Specific overrides for common Fluent UI containers */
+.ms-Stack-inner,
+.ms-StackItem {
+  background-color: transparent !important;
+}
+
+/* Content area styling */
+[data-automation-id="splitButtonContainer"] {
+  background-color: var(--soft-pink-lightest) !important;
+}
+
+/* Focus outlines in pink */
+*:focus {
+  outline: 2px solid var(--soft-pink-dark) !important;
+  outline-offset: 2px;
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--soft-pink-medium) !important;
+  color: var(--soft-pink-accent) !important;
+}
+
+/* Any remaining neutral backgrounds */
+.ms-Fabric,
+.ms-Layer,
+.ms-Overlay {
+  background-color: transparent !important;
+}
+
+/* Callout styling */
+.ms-Callout-main {
+  background-color: var(--soft-pink-lightest) !important;
+  border: 1px solid var(--soft-pink-lines) !important;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.15) !important;
+}
+
+/* Menu styling */
+.ms-ContextualMenu-container {
+  background-color: var(--soft-pink-lightest) !important;
+  border: 1px solid var(--soft-pink-lines) !important;
+}
+
+.ms-ContextualMenu-item {
+  background-color: transparent !important;
+}
+
+.ms-ContextualMenu-item:hover {
+  background-color: var(--soft-pink-light) !important;
+}
+
+/* Progress indicator styling */
+.ms-ProgressIndicator-progressTrack {
+  background-color: var(--soft-pink-light) !important;
+}
+
+.ms-ProgressIndicator-progressBar {
+  background-color: var(--soft-pink-dark) !important;
+}
+
+/* Calendar styling for DatePicker */
+.ms-Calendar {
+  background-color: var(--soft-pink-lightest) !important;
+}
+
+.ms-Calendar-day:hover {
+  background-color: var(--soft-pink-light) !important;
+}
+
+.ms-Calendar-day.is-selected {
+  background-color: var(--soft-pink-dark) !important;
+  color: white !important;
+}
+
+/* Persona styling */
+.ms-Persona-primaryText {
+  color: var(--soft-pink-accent) !important;
+}
+
+.ms-Persona-secondaryText {
+  color: var(--soft-pink-dark) !important;
+}

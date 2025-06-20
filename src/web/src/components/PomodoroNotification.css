@@ -1,0 +1,238 @@
+/* Pomodoro Notification Styles */
+
+.pomodoro-notification-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.pomodoro-notification {
+  background: var(--soft-pink-background);
+  padding: 40px;
+  border-radius: 20px;
+  border: 3px solid;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+  animation: slideInScale 0.5s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.pomodoro-notification::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--soft-pink-dark), var(--soft-pink-medium), var(--soft-pink-dark));
+  animation: shimmer 2s linear infinite;
+}
+
+.pomodoro-notification-icon {
+  font-size: 4rem;
+  animation: bounce 1s ease-in-out infinite alternate;
+}
+
+.pomodoro-notification-progress {
+  width: 100%;
+  height: 4px;
+  background: var(--soft-pink-light);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.pomodoro-notification-progress-bar {
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  animation: progressShrink 5s linear;
+}
+
+/* Phase-specific colors */
+.pomodoro-notification.work {
+  border-color: #ec4899;
+}
+
+.pomodoro-notification.work .pomodoro-notification-icon {
+  color: #ec4899;
+}
+
+.pomodoro-notification.work .pomodoro-notification-progress-bar {
+  background-color: #ec4899;
+}
+
+.pomodoro-notification.break {
+  border-color: #10b981;
+}
+
+.pomodoro-notification.break .pomodoro-notification-icon {
+  color: #10b981;
+}
+
+.pomodoro-notification.break .pomodoro-notification-progress-bar {
+  background-color: #10b981;
+}
+
+.pomodoro-notification.longBreak {
+  border-color: #3b82f6;
+}
+
+.pomodoro-notification.longBreak .pomodoro-notification-icon {
+  color: #3b82f6;
+}
+
+.pomodoro-notification.longBreak .pomodoro-notification-progress-bar {
+  background-color: #3b82f6;
+}
+
+.pomodoro-notification.complete {
+  border-color: #8b5cf6;
+}
+
+.pomodoro-notification.complete .pomodoro-notification-icon {
+  color: #8b5cf6;
+}
+
+.pomodoro-notification.complete .pomodoro-notification-progress-bar {
+  background-color: #8b5cf6;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInScale {
+  0% {
+    transform: scale(0.7) translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes progressShrink {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+/* Focus mode overlay */
+.pomodoro-focus-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;  background: linear-gradient(135deg, rgba(254, 235, 246, 0.95), rgba(252, 231, 243, 0.95));
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2500;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.pomodoro-focus-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 40px;
+}
+
+.pomodoro-focus-message {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--soft-pink-accent);
+  margin-bottom: 20px;
+  animation: focusPulse 2s ease-in-out infinite alternate;
+}
+
+.pomodoro-focus-timer {
+  font-size: 6rem;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  color: var(--soft-pink-dark);
+  margin: 20px 0;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pomodoro-focus-tip {
+  font-size: 1.2rem;
+  color: var(--soft-pink-accent);
+  margin-top: 30px;
+  font-style: italic;
+}
+
+@keyframes focusPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .pomodoro-notification {
+    padding: 30px 20px;
+    margin: 20px;
+  }
+  
+  .pomodoro-notification-icon {
+    font-size: 3rem;
+  }
+  
+  .pomodoro-focus-message {
+    font-size: 2rem;
+  }
+  
+  .pomodoro-focus-timer {
+    font-size: 4rem;
+  }
+  
+  .pomodoro-focus-tip {
+    font-size: 1rem;
+  }
+}

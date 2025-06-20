@@ -1,0 +1,42 @@
+.celebration-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    min-width: 300px;
+    animation: slideInRight 0.3s ease-out;
+}
+
+.celebration-toast .ms-MessageBar--success {
+    background: linear-gradient(135deg, #f9a8d4, #ec4899) !important;
+    border: 2px solid #be185d !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(236, 72, 153, 0.3) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+.celebration-toast .ms-MessageBar-text {
+    color: #ffffff !important;
+    font-size: 14px !important;
+}
+
+.celebration-toast .ms-MessageBar-dismissalButton {
+    color: #ffffff !important;
+}
+
+.celebration-toast .ms-MessageBar-dismissalButton:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 4px !important;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

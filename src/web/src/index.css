@@ -4,8 +4,27 @@ body {
     'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #FEEBF6;
+  min-height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Soft Pink Theme Override for Fluent UI */
+:root {
+  --soft-pink-background: #FEEBF6;
+  --soft-pink-lines: #DB8DD0;
+  --soft-pink-lightest: #fdf2f8;
+  --soft-pink-extra-light: #fef7f0;
+  --soft-pink-light: #fce7f3;
+  --soft-pink-medium: #f9a8d4;
+  --soft-pink-dark: #ec4899;
+  --soft-pink-accent: #be185d;
+  --light-purple: #e879f9;
+  --light-purple-hover: #d946ef;
+  --light-purple-dark: #c026d3;
+  --lavender: #f3e8ff;
+  --lavender-dark: #e9d5ff;
 }

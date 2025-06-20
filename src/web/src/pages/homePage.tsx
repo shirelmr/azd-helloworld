@@ -12,6 +12,9 @@ import { stackItemPadding, stackPadding, titleStackStyles } from '../ux/styles';
 import { useNavigate, useParams } from 'react-router-dom';
 import { bindActionCreators } from '../actions/actionCreators';
 import WithApplicationInsights from '../components/telemetryWithAppInsights.tsx';
+import useCelebration from '../hooks/useCelebration';
+import useCelebrationSound from '../hooks/useCelebrationSound';
+import { useCelebrationToast } from '../components/CelebrationToast';
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -22,7 +25,12 @@ const HomePage = () => {
         items: bindActionCreators(itemActions, appContext.dispatch) as unknown as ItemActions,
     }), [appContext.dispatch]);
 
-    const [isReady, setIsReady] = useState(false)
+    const [isReady, setIsReady] = useState(false);
+    
+    // Celebration hooks
+    const { celebrateRandom } = useCelebration();
+    const { playSuccessSound } = useCelebrationSound();
+    const { showCelebration, ToastComponent } = useCelebrationToast();
 
     // Create default list of does not exist
     useEffect(() => {
@@ -57,8 +65,23 @@ const HomePage = () => {
     useEffect(() => {
         if (appContext.state.selectedList?.id && !appContext.state.selectedList.items) {
             const loadListItems = async (listId: string) => {
-                await actions.items.list(listId);
-                setIsReady(true)
+                const items = await actions.items.list(listId);
+                setIsReady(true);
+                // If no items exist, create a default item
+                if (items.length === 0) {
+                    await actions.items.save(listId, {
+                        name: 'My First Task',
+                        listId,
+                        state: TodoItemState.Todo
+                    });
+                } else if (items.length === 1) {
+                    // Add a second item for demo purposes
+                    await actions.items.save(listId, {
+                        name: 'Another Task',
+                        listId,
+                        state: TodoItemState.Todo
+                    });
+                }
             }
 
             loadListItems(appContext.state.selectedList.id)
@@ -66,13 +89,45 @@ const HomePage = () => {
     }, [actions.items, appContext.state.selectedList?.id, appContext.state.selectedList?.items])
 
     const onItemCreated = async (item: TodoItem) => {
-        return await actions.items.save(item.listId, item);
+        const newItem = await actions.items.save(item.listId, item);
+        // Reload the list to ensure immediate display of the new item
+        actions.items.list(item.listId);
+        return newItem;
     }
 
-    const onItemCompleted = (item: TodoItem) => {
+    const onItemCompleted = async (item: TodoItem) => {
         item.state = TodoItemState.Done;
         item.completedDate = new Date();
-        actions.items.save(item.listId, item);
+        await actions.items.save(item.listId, item);
+        // Reload the list to ensure state changes are reflected
+        actions.items.list(item.listId);
+        
+        // 🎉 CELEBRATION TIME! 🎉
+        // Trigger confetti animation
+        celebrateRandom();
+        
+        // Play success sound
+        playSuccessSound();
+        
+        // Random celebratory messages
+        const celebratoryMessages = [
+            `Task "${item.name}" completed! Great job!`,
+            `Woohoo! "${item.name}" is done!`,
+            `Amazing work! You finished "${item.name}"!`,
+            `Victory! "${item.name}" completed!`,
+            `Fantastic! "${item.name}" checked off the list!`,
+            `You're on fire! "${item.name}" done!`,
+            `Boom! "${item.name}" completed like a boss!`,
+            `Excellent! Another task bites the dust!`
+        ];
+        
+        const randomMessage = celebratoryMessages[Math.floor(Math.random() * celebratoryMessages.length)];
+        
+        // Show celebration toast
+        showCelebration(randomMessage);
+        
+        // Optional: Show a brief success message
+        console.log(`🎊 Congratulations! ${randomMessage} 🎊`);
     }
 
     const onItemSelected = (item?: TodoItem) => {
@@ -153,6 +208,7 @@ const HomePage = () => {
                     onComplete={onItemCompleted}
                     onDelete={onItemDeleted} />
             </Stack.Item>
+            <ToastComponent />
         </Stack >
     );
 };
