@@ -82,7 +82,7 @@ module api './app/api-appservice-avm.bicep' = {
       SCM_DO_BUILD_DURING_DEPLOYMENT: true
     }
     appInsightResourceId: monitoring.outputs.applicationInsightsResourceId
-    allowedOrigins: [ web.outputs.SERVICE_WEB_URI ]
+    allowedOrigins: [ '*' ]
   }
 }
 

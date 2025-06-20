@@ -36,7 +36,7 @@ module api 'br/public:avm/res/web/site:0.6.0' = {
     }
     siteConfig: union(siteConfig, {
       cors: {
-        allowedOrigins: union(['https://portal.azure.com', 'https://ms.portal.azure.com'], allowedOrigins)
+        allowedOrigins: allowedOrigins
       }
       appCommandLine: appCommandLine
     })

@@ -1,0 +1,235 @@
+/* Pomodoro Timer Styles */
+
+.pomodoro-floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pomodoro-toggle-button {
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.pomodoro-toggle-button:hover {
+  transform: scale(1.1) !important;
+}
+
+.pomodoro-mini-timer {
+  position: absolute;
+  top: -30px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  animation: fadeInOut 1s ease-in-out infinite alternate;
+}
+
+.pomodoro-phase-display {
+  background: linear-gradient(135deg, var(--soft-pink-lightest), var(--soft-pink-light));
+  border: 2px solid var(--soft-pink-lines);
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pomodoro-phase-display.running {
+  animation: phaseGlow 2s ease-in-out infinite alternate;
+}
+
+.pomodoro-phase-display.work {
+  border-color: #ec4899;
+}
+
+.pomodoro-phase-display.shortBreak {
+  border-color: #10b981;
+}
+
+.pomodoro-phase-display.longBreak {
+  border-color: #3b82f6;
+}
+
+.pomodoro-timer-display {
+  position: relative;
+}
+
+.pomodoro-time {
+  transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+}
+
+.pomodoro-time.running {
+  animation: timerPulse 1s ease-in-out infinite alternate;
+}
+
+.pomodoro-time.urgent {
+  animation: urgentBlink 0.5s ease-in-out infinite alternate;
+  color: #dc2626 !important;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes phaseGlow {
+  0% {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(236, 72, 153, 0.6);
+  }
+}
+
+@keyframes timerPulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes urgentBlink {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* Confetti animation for phase completion */
+.pomodoro-confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.pomodoro-confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--soft-pink-medium);
+  animation: confettiFall 3s linear infinite;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .pomodoro-floating-button {
+    bottom: 80px;
+    right: 15px;
+  }
+  
+  .pomodoro-time {
+    font-size: 3rem !important;
+  }
+}
+
+/* Phase-specific backgrounds */
+.pomodoro-phase-display.work.running {
+  background: linear-gradient(135deg, #fce7f3, #f3e8ff);
+  animation: workPhaseAnimation 3s ease-in-out infinite alternate;
+}
+
+.pomodoro-phase-display.shortBreak.running {
+  background: linear-gradient(135deg, #d1fae5, #ecfdf5);
+  animation: breakPhaseAnimation 3s ease-in-out infinite alternate;
+}
+
+.pomodoro-phase-display.longBreak.running {
+  background: linear-gradient(135deg, #dbeafe, #eff6ff);
+  animation: longBreakPhaseAnimation 3s ease-in-out infinite alternate;
+}
+
+@keyframes workPhaseAnimation {
+  0% {
+    background: linear-gradient(135deg, #fce7f3, #f3e8ff);
+  }
+  100% {
+    background: linear-gradient(135deg, #f9a8d4, #e9d5ff);
+  }
+}
+
+@keyframes breakPhaseAnimation {
+  0% {
+    background: linear-gradient(135deg, #d1fae5, #ecfdf5);
+  }
+  100% {
+    background: linear-gradient(135deg, #a7f3d0, #d1fae5);
+  }
+}
+
+@keyframes longBreakPhaseAnimation {
+  0% {
+    background: linear-gradient(135deg, #dbeafe, #eff6ff);
+  }
+  100% {
+    background: linear-gradient(135deg, #93c5fd, #dbeafe);
+  }
+}
+
+/* Focus mode styles */
+.pomodoro-focus-mode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.pomodoro-focus-content {
+  background: var(--soft-pink-background);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+}
